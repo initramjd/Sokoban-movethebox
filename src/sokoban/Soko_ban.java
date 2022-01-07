@@ -44,12 +44,12 @@ public class Soko_ban {
 						positionO = positionO + newMove;
 
 						// kraj provere da li igrac ne gura kocku
-					} else { // ako igrac ne gura kocku
+					} else { // ako igrac  gura kocku
 
-						if ((checkMove(newMove, positionB) // provera da li ce kocka ispasti sa table
+						if ((checkMove(newMove, positionB) // pocetak provere da li ce kocka ispasti sa table
 								&& roundMove(positionB, newMove, arrayW, arrayS, arrayA, arrayD))) {
 
-							if (!isOverX(board, positionB, newMove)) { // pocetak provere da li kocka udara u zid nakon
+							if (!isOverX(board, positionB, newMove)) { // pocetak provere da li kocka ne udara u zid nakon
 																		// pomeranja od strane igraca
 
 								newBoard(board, positionB, newMove, b);
@@ -57,19 +57,21 @@ public class Soko_ban {
 								newBoard(board, positionO, newMove, o);
 								positionO = positionO + newMove;
 
-							} else { // pomeranje igraca i kocke
+							
+								//kraj provere da li kocka ne udara u zid nakon pomeranja od strane igraca
+							} else { // pocetak kocka  udara u zid nakon pomeranja od strane igraca
 								System.out.println();
 								System.out.println("Kocki smeta zid");
 
-							} // kraj poceranja igraca i kocke
+							} // kraj kocka  udara u zid nakon pomeranja od strane igraca
 
-						} else {
+						} else { 
 							System.out.println();
 							System.out.println("Kutija ce ispasti sa table");
-						} //
-					} // kraj ako igrac ne gura kocku
-
-				} else { // kraj provere da li igrac ne udara u zid
+						} // kraj provere da li ce kocka ispasti sa table
+					} // kraj ako igrac gura kocku
+					// kraj provere da li igrac ne udara u zid
+				} else { // kraj provere da li igrac  udara u zid
 					System.out.println();
 					System.out.println("Smeta ti zid");
 				}
@@ -80,8 +82,8 @@ public class Soko_ban {
 
 			}
 
-			if (!isFinishGame(board)) {
-				returnE(board);
+			if (!isFinishGame(board)) { // ako igra nije zavrsena
+				returnE(board); // vrati E na polje 24 ako je slobodno
 			}
 			printBoard(board);
 		} // kraj glavne petlje
